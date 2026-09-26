@@ -1,2 +1,1 @@
 # MARI-IA
-# MARI-IA
