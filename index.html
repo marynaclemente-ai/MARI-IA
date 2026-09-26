@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Mari-IA - Assistente de inteligência artificial"
+    >
+
+    <title>Mari-IA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <!-- ================================================
+         TELA DE CONFIGURAÇÃO
+         ================================================ -->
+
+    <section
+        class="setup-screen"
+        id="setupScreen"
+    >
+
+        <div class="setup-card">
+
+            <div class="setup-logo">
+                M
+            </div>
+
+            <h1>Bem-vindo à Mari-IA</h1>
+
+            <p class="setup-description">
+                Para começar a conversar com a Mari-IA,
+                informe sua chave da API do Google Gemini.
+            </p>
+
+            <div class="api-warning">
+                <span class="warning-icon">🔐</span>
+
+                <div>
+                    <strong>Sua chave permanece no navegador</strong>
+
+                    <p>
+                        Ela não será salva nos arquivos do projeto.
+                        Ao atualizar a página, será necessário
+                        informar novamente.
+                    </p>
+                </div>
+            </div>
+
+            <label
+                for="apiKeyInput"
+                class="input-label"
+            >
+                Chave da API Gemini
+            </label>
+
+            <div class="api-input-wrapper">
+
+                <input
+                    id="apiKeyInput"
+                    type="password"
+                    autocomplete="off"
+                    spellcheck="false"
+                    placeholder="Cole sua chave da API aqui"
+                >
+
+                <button
+                    id="toggleKeyVisibility"
+                    class="toggle-key"
+                    type="button"
+                    title="Mostrar chave"
+                >
+                    👁
+                </button>
+
+            </div>
+
+            <p
+                class="setup-error"
+                id="setupError"
+            ></p>
+
+            <button
+                id="startButton"
+                class="start-button"
+                type="button"
+            >
+                <span>Entrar na Mari-IA</span>
+                <span>→</span>
+            </button>
+
+            <p class="setup-footer">
+                A chave é utilizada somente para realizar
+                as chamadas à API durante esta sessão.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================
+         APLICAÇÃO
+         ================================================ -->
+
+    <main
+        class="app hidden"
+        id="app"
+    >
+
+        <!-- CABEÇALHO -->
+
+        <header class="header">
+
+            <div class="brand">
+
+                <div class="avatar">
+                    M
+                </div>
+
+                <div class="brand-info">
+
+                    <h1>Mari-IA</h1>
+
+                    <div class="status">
+
+                        <span class="status-dot"></span>
+
+                        <span>Online</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="clear-button"
+                id="clearChat"
+                type="button"
+                title="Nova conversa"
+            >
+                <span>↻</span>
+
+                <span class="clear-text">
+                    Nova conversa
+                </span>
+            </button>
+
+        </header>
+
+
+        <!-- CHAT -->
+
+        <section
+            class="chat"
+            id="chat"
+            aria-live="polite"
+        >
+
+            <div
+                class="welcome"
+                id="welcome"
+            >
+
+                <div class="welcome-avatar">
+                    M
+                </div>
+
+                <h2>Olá! Eu sou a Mari. 👋</h2>
+
+                <p>
+                    Converse comigo como se estivesse
+                    falando diretamente comigo.
+                </p>
+
+
+                <div class="suggestions">
+
+                    <button
+                        class="suggestion"
+                        type="button"
+                        data-message="Olá! Pode se apresentar?"
+                    >
+                        <span>👋</span>
+                        <span>Se apresente</span>
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        type="button"
+                        data-message="Conte um pouco sobre você."
+                    >
+                        <span>💬</span>
+                        <span>Sobre você</span>
+                    </button>
+
+
+                    <button
+                        class="suggestion"
+                        type="button"
+                        data-message="Quais assuntos você gosta de conversar?"
+                    >
+                        <span>✨</span>
+                        <span>Vamos conversar</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ÁREA DE DIGITAÇÃO -->
+
+        <footer class="composer-area">
+
+            <div class="composer">
+
+                <textarea
+                    id="messageInput"
+                    rows="1"
+                    maxlength="4000"
+                    placeholder="Digite sua mensagem..."
+                    aria-label="Digite sua mensagem"
+                ></textarea>
+
+
+                <button
+                    id="sendButton"
+                    class="send-button"
+                    type="button"
+                    aria-label="Enviar mensagem"
+                >
+                    <span>➤</span>
+                </button>
+
+            </div>
+
+
+            <div class="composer-footer">
+
+                <span>
+                    Mari-IA pode cometer erros.
+                </span>
+
+                <span id="characterCount">
+                    0 / 4000
+                </span>
+
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
